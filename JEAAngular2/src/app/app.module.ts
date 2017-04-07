@@ -12,7 +12,9 @@ import { SmallprofileComponent } from './smallprofile/smallprofile.component';
 import { NewkweetComponent } from './newkweet/newkweet.component';
 import { LoginComponent } from './login/login.component';
 
-import { HttpService } from "app/http.service";
+import { RestService } from "app/rest.service";
+import { UserService } from "app/user.service";
+import { KweetService } from "app/kweet.service";
 
 @NgModule({
   declarations: [
@@ -32,8 +34,10 @@ import { HttpService } from "app/http.service";
   ],
   providers: [
     HttpModule,
-    HttpService
+    RestService,
+    UserService,
+    KweetService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

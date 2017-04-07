@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpService } from "app/http.service";
+import { RestService } from "app/rest.service";
 
 @Injectable()
 export class KweetService {
 
-  constructor(private httpService: HttpService) { 
+  constructor(private restService: RestService) { 
     
   }
 

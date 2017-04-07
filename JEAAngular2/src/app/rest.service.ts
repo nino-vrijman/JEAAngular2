@@ -1,24 +1,24 @@
 import { Injectable } from '@angular/core';
 import { Http } from "@angular/http";
 
-import "rxjs/add/operator/map";
-
 @Injectable()
-export class HttpService {
+export class RestService {
+  private API_URL: string = "http://localhost:8080/kwetter/API"
 
   constructor(private http: Http) {
 
   }
 
   get(url: string) {
-    return this.http.get(url);
+    return this.http.get(`${this.API_URL}/${url}`);
   }
 
   post(url: string, postdata: Object) {
-    return this.http.post(url, postdata);
+    return this.http.post(`${this.API_URL}/${url}`, postdata);
   }
 
   getTimeTest() {
     return this.http.get('http://date.jsontest.com/');
   }
+
 }

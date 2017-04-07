@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
-import { HttpService } from "app/http.service";
+import { Http } from '@angular/http';
+
+import { RestService } from "app/rest.service";
 
 @Injectable()
 export class UserService {
 
-  constructor(private httpService: HttpService) { 
+  constructor(private restService: RestService) { 
 
   }
 
   getLoggedInUser() {
-    return this.httpService.get("users/loggedInUser");
+    return this.restService.get("users/loggedInUser");
   }
 
 }
