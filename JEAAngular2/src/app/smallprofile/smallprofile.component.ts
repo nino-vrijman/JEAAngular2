@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { UserService } from "app/user.service";
+import { User } from "app/user";
 
 @Component({
   selector: 'app-smallprofile',
@@ -8,13 +9,15 @@ import { UserService } from "app/user.service";
   styleUrls: ['./smallprofile.component.css']
 })
 export class SmallprofileComponent implements OnInit {
-  private username: string;
+  @Input() username: string;
+  private user: User;
 
-  constructor(private UserService: UserService) {
-    this.username = "nino";
+  constructor(private userService: UserService) {
+    
   }
 
   ngOnInit() {
+    this.userService.getUser(this.username).subscribe(data => console.log(data));
   }
 
 }

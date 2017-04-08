@@ -10,6 +10,10 @@ export class UserService {
 
   }
 
+  getUser(username: string) {
+    return this.restService.get(`users/${username}`);
+  }
+
   getLoggedInUser() {
     return this.restService.get("users/loggedInUser");
   }

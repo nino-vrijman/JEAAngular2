@@ -10,11 +10,12 @@ import { KweetService } from "app/kweet.service";
   providers: [ KweetService, UserService ]
 })
 export class TimelineComponent implements OnInit {
-  private testData: string;
+  private loggedInUser: string;
 
   constructor(private kweetService: KweetService,
               private UserService: UserService) {
-
+    this.loggedInUser = "nino";
+    console.log(this.loggedInUser);
   }
 
   ngOnInit() {
