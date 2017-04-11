@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import { KweetService } from "app/kweet.service";
 
 @Component({
   selector: 'app-kweets',
@@ -6,11 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./kweets.component.css']
 })
 export class KweetsComponent implements OnInit {
-  //  TODO: Add list of kweets here (add in constructor based on timeline kweets or profile kweets)
+  @Input() username: string;
+  @Input() timeline: boolean;
+  private kweets: Object[];
 
-  constructor() { }
+  constructor(private kweetService: KweetService) {
+
+  }
 
   ngOnInit() {
+    console.log(this.username + " " + this.timeline)
+    this.kweetService.getKweets(this.username, this.timeline, 0, 10).subscribe(data =>
+      this.kweets = data.json() as Object[]
+    );
+
   }
 
 }

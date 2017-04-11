@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from "@angular/router";
 
 import { KweetService } from "app/kweet.service";
 import { UserService } from "app/user.service";
+import { User } from "app/user";
 
 @Component({
   selector: 'app-profile',
@@ -9,13 +11,18 @@ import { UserService } from "app/user.service";
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  private username: string;
 
-  constructor(private kweetService: KweetService,
-              private UserService: UserService) {
+  constructor(
+    private userService: UserService,
+    private route: ActivatedRoute ) {
 
   }
 
   ngOnInit() {
+    this.route.params.subscribe(parameters =>
+      this.username = parameters['username']
+    );
   }
 
 }

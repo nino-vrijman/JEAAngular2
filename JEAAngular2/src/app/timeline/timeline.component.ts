@@ -15,17 +15,10 @@ export class TimelineComponent implements OnInit {
   constructor(private kweetService: KweetService,
               private UserService: UserService) {
     this.loggedInUser = "nino";
-    console.log(this.loggedInUser);
   }
 
   ngOnInit() {
 
-  }
-
-  clickTestGet() {
-    console.log("clickTestGetcalled");
-    // this.httpService.getTimeTest()
-    //     .subscribe(data => console.log(data));
   }
 
 }

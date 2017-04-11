@@ -10,7 +10,8 @@ export const router: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'login', component: LoginComponent},
     { path: 'timeline', component: TimelineComponent },
-    { path: 'profile', component: ProfileComponent }
+    { path: 'profile', component: ProfileComponent },
+    { path: 'profile/:username', component: ProfileComponent }
 ];
 
 export const routes: ModuleWithProviders = RouterModule.forRoot(router);

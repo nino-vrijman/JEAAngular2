@@ -1,19 +1,19 @@
 <div>
     <div class="well well-sm col-sm-6">
         <div class="media-left media-middle">
-            <img class="userAvatar" src="" alt="User avatar" />
+            <a routerLink="../profile/{{user?.username}}"><img class="userAvatar" src="{{user?.avatarURL}}" alt="User avatar" /></a>
         </div>
         <div class="media-body media-middle">
             <div class="col-md-8">
-                <h3 class="media-heading">USERNAME</h3>
-                <p>no bio</p>
+                <h3 class="media-heading">{{user?.username}}</h3>
+                <p>{{user?.bio}}</p>
             </div>
             <div class="col-md-4 pull-right">
                 <p>Followers:
-                    <span>-1</span>
+                    <span>{{user?.followers?.length || -1}}</span>
                 </p>
                 <p>Following:
-                    <span>-1</span>
+                    <span>{{user?.following?.length || -1}}</span>
                 </p>
             </div>
         </div>

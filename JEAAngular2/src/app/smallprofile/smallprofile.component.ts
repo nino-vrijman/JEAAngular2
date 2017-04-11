@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from "@angular/router";
 
 import { UserService } from "app/user.service";
+import { KweetService } from "app/kweet.service";
 import { User } from "app/user";
 
 @Component({
@@ -10,14 +12,17 @@ import { User } from "app/user";
 })
 export class SmallprofileComponent implements OnInit {
   @Input() username: string;
-  private user: User;
+  private user?: User;
 
-  constructor(private userService: UserService) {
-    
+  constructor(
+    private route: ActivatedRoute,
+    private userService: UserService) {
+
   }
 
   ngOnInit() {
-    this.userService.getUser(this.username).subscribe(data => console.log(data));
+    this.userService.getUser(this.username).subscribe(data =>
+      this.user = data.json() as User
+    );
   }
-
 }

@@ -1,4 +1,5 @@
-<p>
-  kweets works!
-  kweet loop should go here
-</p>
+<div *ngFor="let kweet of kweets" class="kweet well well-sm">
+  <p class="kweetContent">{{kweet.content}}</p>
+  <span class="kweetDate">Posted on: {{kweet.date}}</span>
+  <!--<span class="kweetCreatedBy">Created by: #{kweet.getCreatedBy().getUsername()}</span>-->
+</div>

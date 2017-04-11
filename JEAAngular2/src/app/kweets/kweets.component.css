@@ -1,0 +1,14 @@
+.kweet.well.well-sm {
+    margin: 5px 0px;
+    max-width: 50%;
+    /*margin-bottom: 10px;*/
+}
+
+.kweetContent {
+    margin-bottom: 0px;
+}
+
+.kweetDate, .kweetCreatedBy {
+    display: block;
+    font-size: 10px;
+}

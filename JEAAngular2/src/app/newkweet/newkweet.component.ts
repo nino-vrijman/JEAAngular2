@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { KweetService } from "app/kweet.service";
 
 @Component({
   selector: 'app-newkweet',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewkweetComponent implements OnInit {
 
-  constructor() { }
+  constructor(private kweetService: KweetService) { 
+
+  }
 
   ngOnInit() {
+  }
+
+  createKweet(newKweetContent: string) {
+    this.kweetService.create(newKweetContent, 'nino').subscribe(data => 
+      location.reload()
+    );
   }
 
 }

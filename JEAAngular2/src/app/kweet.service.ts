@@ -8,12 +8,18 @@ export class KweetService {
     
   }
 
-  getTimelineKweets() {
-
+  getKweets(username: string, forTimeline: boolean, offset: number, limit: number) {
+    let url: string;
+    if (forTimeline) {
+      url = `users/${username}/timeline/${offset}/${limit}`;
+    } else {
+      url = `users/${username}/tweets/${offset}/${limit}`;
+    }
+    return this.restService.get(url);
   }
 
-  getUserKweets() {
-    
+  create(newKweetContent: string, username: string) {
+    return this.restService.post(`tweets/${newKweetContent}/${username}`, { });
   }
 
 }

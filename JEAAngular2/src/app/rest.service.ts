@@ -17,7 +17,7 @@ export class RestService {
   }
 
   post(url: string, postdata: Object) {
-    return this.http.post(`${this.API_URL}/${url}`, postdata);
+    return this.http.post(`${this.API_URL}/${url}`, { headers: this.setHeaders() });
   }
 
   getTimeTest() {
@@ -26,7 +26,7 @@ export class RestService {
 
   setHeaders() {
     const headers: Headers = new Headers();
-    headers.append('Authorization', `Basic ${btoa(`${this.username}:${this.password}`)}`);
+    headers.append('Authorization', 'Basic ' + btoa(`${this.username}:${this.password}`));
 
     return headers;
   }
