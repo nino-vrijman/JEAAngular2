@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { routes } from './app.router';
+import { TranslateModule } from 'ng2-translate';
 
 import { AppComponent } from './app.component';
 import { TimelineComponent } from './timeline/timeline.component';
@@ -30,7 +31,8 @@ import { KweetService } from "app/kweet.service";
     BrowserModule,
     FormsModule,
     HttpModule,
-    routes
+    routes,
+    TranslateModule.forRoot()
   ],
   providers: [
     HttpModule,

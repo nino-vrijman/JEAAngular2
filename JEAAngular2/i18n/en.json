@@ -1,0 +1,18 @@
+{
+  "HEADER": {
+    "TITLE": "Kwetter in het Engels",
+    "SELECT_LANGUAGE": "Change language"
+  },
+  "NEW_KWEET": {
+    "KWEETS_HEADER": "What's happening?",
+    "POST": "Post"
+  },
+  "KWEETS": {
+    "POSTED_ON": "Posted on",
+    "POSTED_BY": "Posted by"
+  },
+  "SMALL_PROFILE": {
+    "FOLLOWERS": "Followers",
+    "FOLLOWING": "Following"
+  }
+}

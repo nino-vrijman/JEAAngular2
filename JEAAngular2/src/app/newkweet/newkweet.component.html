@@ -1,9 +1,9 @@
 <div>
-  <h3>What's happening?</h3>
+  <h3>{{ 'NEW_KWEET.KWEETS_HEADER' | translate }}</h3>
   <div class="well well-sm col-md-6">
     <div class="form">
       <input [(ngModel)]="newKweetContent" type="text" placeholder="..."/>
-      <button (click)="createKweet(newKweetContent)" type="button" class="btn btn-primary">Post</button>
+      <button (click)="createKweet(newKweetContent)" type="button" class="btn btn-primary">{{ 'NEW_KWEET.POST' | translate }}</button>
     </div>
   </div>
 </div>

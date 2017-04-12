@@ -1,0 +1,18 @@
+{
+  "HEADER": {
+    "TITLE": "Kwetter in het Nederlands",
+    "SELECT_LANGUAGE": "Verander taal"
+  },
+  "NEW_KWEET": {
+    "KWEETS_HEADER": "Wat is er gebeurd?",
+    "POST": "Plaats"
+  },
+  "KWEETS": {
+    "POSTED_ON": "Geplaatst op",
+    "POSTED_BY": "Geplaatst door"
+  },
+  "SMALL_PROFILE": {
+    "FOLLOWERS": "Volgers",
+    "FOLLOWING": "Volgend"
+  }
+}

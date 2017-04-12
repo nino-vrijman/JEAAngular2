@@ -18,4 +18,12 @@ export class UserService {
     return this.restService.get("users/loggedInUser");
   }
 
+  getFollowing(username: string) {
+    return this.restService.get(`users/${username}/following`);
+  }
+
+  getFollowers(username: string) {
+    return this.restService.get(`users/${username}/followers`);
+  }
+
 }

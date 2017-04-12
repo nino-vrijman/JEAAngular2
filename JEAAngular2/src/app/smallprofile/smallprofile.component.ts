@@ -13,6 +13,8 @@ import { User } from "app/user";
 export class SmallprofileComponent implements OnInit {
   @Input() username: string;
   private user?: User;
+  private following: User[];
+  private followers: User[];
 
   constructor(
     private route: ActivatedRoute,
@@ -23,6 +25,12 @@ export class SmallprofileComponent implements OnInit {
   ngOnInit() {
     this.userService.getUser(this.username).subscribe(data =>
       this.user = data.json() as User
+    );
+    this.userService.getFollowing(this.username).subscribe(data => 
+      this.following = data.json() as User[]
+    );
+    this.userService.getFollowers(this.username).subscribe(data => 
+      this.followers = data.json() as User[]
     );
   }
 }
