@@ -17,11 +17,9 @@ export class KweetsComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.username + " " + this.timeline)
     this.kweetService.getKweets(this.username, this.timeline, 0, 10).subscribe(data =>
       this.kweets = data.json() as Object[]
     );
-
   }
 
 }
