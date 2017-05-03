@@ -1,6 +1,6 @@
 <div *ngFor="let kweet of kweets" class="kweet well well-sm">
   <p class="kweetContent">{{kweet.content}}</p>
   <span class="kweetDate">{{ 'KWEETS.POSTED_ON' | translate }} {{kweet.date}}</span>
-  <span *ngIf="timeline" class="kweetCreatedBy">{{ 'KWEETS.POSTED_BY' | translate }} {{kweet.createdBy.username}}</span>
+  <span *ngIf="timeline" class="kweetCreatedBy">{{ 'KWEETS.POSTED_BY' | translate }} {{kweet.createdBy.username || kweet.createdBy}}</span>
   <!--<span class="kweetCreatedBy">Created by: #</span>-->
 </div>

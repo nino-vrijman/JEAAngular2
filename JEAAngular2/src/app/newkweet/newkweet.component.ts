@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { KweetService } from "app/kweet.service";
-import { EventEmitter } from "events";
+import { IKweet } from "app/ikweet";
 
 @Component({
   selector: 'app-newkweet',
   templateUrl: './newkweet.component.html',
-  styleUrls: ['./newkweet.component.css']
+  styleUrls: ['./newkweet.component.css'],
+  providers: [KweetService]
 })
 export class NewkweetComponent implements OnInit {
+  @Output() kweetReceivedEvent: EventEmitter<IKweet> = new EventEmitter();
   private websocket: WebSocket;
 
   constructor(private kweetService: KweetService) { 
@@ -19,14 +21,13 @@ export class NewkweetComponent implements OnInit {
   }
 
   initializeWebSocket() {
-    this.websocket.onopen = (event) => {
-      console.log("Websocket opened in New Kweet");
-    }
-    this.websocket.onmessage = (event) => this.kweetReceived(event);
+    this.websocket.onmessage = (event) => {
+      this.kweetReceived(event);
+    } 
   }
 
   createKweet(newKweetContent: string) {
-    if (this.websocket.readyState === this.websocket.OPEN) {
+    if (typeof this.websocket !== "undefined" && this.websocket.readyState === this.websocket.OPEN) {
       console.log("Kweet sent through websocket");
       this.websocket.send(newKweetContent);
     } else {
@@ -37,8 +38,15 @@ export class NewkweetComponent implements OnInit {
     }
   }
 
-  kweetReceived(event) {
-    console.log(event.data);
+  kweetReceived(message: MessageEvent) {
+    const response = JSON.parse(message.data);
+    const receivedKweet: IKweet = {
+      id: response.id,
+      content: response.content,
+      date: response.date,
+      createdBy: response.createdBy
+    }
+    this.kweetReceivedEvent.emit(receivedKweet);
   }
 
 }

@@ -19,7 +19,8 @@ export class KweetService {
   }
 
   create(newKweetContent: string, username: string) {
-    return this.restService.post(`tweets/${newKweetContent}/${username}`, { });
+    return this.restService.post(`tweets/jms/${newKweetContent}/${username}`, { });
+    // return this.restService.post(`tweets/${newKweetContent}/${username}`, { });
   }
 
 }
