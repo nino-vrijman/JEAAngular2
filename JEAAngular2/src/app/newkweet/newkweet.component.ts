@@ -13,31 +13,48 @@ export class NewkweetComponent implements OnInit {
   private websocket: WebSocket;
 
   constructor(private kweetService: KweetService) { 
-    this.websocket = new WebSocket(`ws://localhost:8080/kwetter/kweetEndpoint?username=nino`);
     this.initializeWebSocket();
   }
 
   ngOnInit() {
   }
 
+  /**
+   * Initializes the newly created websocket which includes specifying event handlers.
+   * 
+   * @memberOf NewkweetComponent
+   */
   initializeWebSocket() {
+    this.websocket = new WebSocket(`ws://localhost:8080/kwetter/kweetEndpoint?username=nino`);
     this.websocket.onmessage = (event) => {
       this.kweetReceived(event);
     } 
   }
 
+  /**
+   * Creates a new kweet.
+   * 
+   * @param {string} newKweetContent The content of the new kweet.
+   * 
+   * @memberOf NewkweetComponent
+   */
   createKweet(newKweetContent: string) {
     if (typeof this.websocket !== "undefined" && this.websocket.readyState === this.websocket.OPEN) {
-      console.log("Kweet sent through websocket");
       this.websocket.send(newKweetContent);
     } else {
-      console.log("Kweet sent through service");
-      this.kweetService.create(newKweetContent, 'nino').subscribe(data => 
-        location.reload()
-      );
+      this.kweetService.create(newKweetContent, 'nino').subscribe(data => {
+        location.reload();
+      });
     }
   }
 
+  /**
+   * Event handler for when a new kweet has been received.
+   * 
+   * @param {MessageEvent} message The event containing the new kweet data.
+   * 
+   * @memberOf NewkweetComponent
+   */
   kweetReceived(message: MessageEvent) {
     const response = JSON.parse(message.data);
     const receivedKweet: IKweet = {
@@ -48,5 +65,4 @@ export class NewkweetComponent implements OnInit {
     }
     this.kweetReceivedEvent.emit(receivedKweet);
   }
-
 }

@@ -19,13 +19,27 @@ export class KweetsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.kweetService.getKweets(this.username, this.timeline, 0, 10).subscribe(data =>
-        this.kweets = data.json() as object[]
-    );
+    if (this.timeline) {
+      this.kweetService.getTimelineKweets(this.username, 0, 10).subscribe(data => this.setKweets(data));
+    } else {
+      this.kweetService.getProfileKweets(this.username, 0, 10).subscribe(data => this.setKweets(data));
+    }
+  }
+
+  /**
+   * Sets the kweets which should be displayed.
+   * 
+   * @param {Response} data A response containing the kweets that should be displayed.
+   * 
+   * @memberOf KweetsComponent
+   */
+  setKweets(data) {
+    this.kweets = data.json() as object[]
   }
 
   /**
    * Invoked when a new kweet which should be displayed on the users timeline has been posted.
+   * Adds the new kweet as the first element of the array.
    * 
    * @param {IKweet} kweet The new kweet which has been posted.
    * 
